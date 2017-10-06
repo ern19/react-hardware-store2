@@ -47,6 +47,11 @@ class Shop extends Component {
     newCartList.push(this.state.productList[index])
     this.setState({cartList: newCartList})
   }
+  deleteProductFromCartList = (id) => {
+    const newCartList = [...this.state.cartList]
+    newCartList.splice(id, 1)
+    this.setState({cartList: newCartList})
+  }
   render () {
     return (
       <div >
@@ -64,7 +69,8 @@ class Shop extends Component {
               />}
           </div>
           <div className="cart">
-            <CartView cartList={this.state.cartList}/>
+            <CartView cartList={this.state.cartList}deleteProductFromCartList={this.deleteProductFromCartList}/>
+              
           </div>
         </div>
       </div>
