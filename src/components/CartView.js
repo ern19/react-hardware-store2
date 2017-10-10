@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Product from './Product'
 
-class ShopView extends Component {
+class CartView extends Component {
   render () {
     return (
       <div>
@@ -14,6 +14,7 @@ class ShopView extends Component {
                   productName={product.productName}
                   price={product.price}
                   description={product.description}
+                  quantity={product.quantity}
                 />
                 <button onClick={() => this.props.deleteProductFromCartList(index)}>Remove from cart</button>
               </div>
@@ -25,4 +26,4 @@ class ShopView extends Component {
   }
 }
 
-export default ShopView
+export default CartView

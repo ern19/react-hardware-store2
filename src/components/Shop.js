@@ -13,12 +13,14 @@ class Shop extends Component {
         {
           productName: 'Hammer',
           description: 'Itsa hammer',
-          price: 12.3
+          price: 12.3,
+          quantity: 1
         },
         {
           productName: 'Nail',
           description: 'Itsa nail',
-          price: 0.12
+          price: 0.12,
+          quantity: 1
         }
       ],
       cartList: []
@@ -43,9 +45,16 @@ class Shop extends Component {
 
   addToCart = (index) => {
     const newCartList = [...this.state.cartList]
-    console.log("button clicked")
-    newCartList.push(this.state.productList[index])
+    if (newCartList.includes(this.state.productList[index]) === false) {
+      newCartList.push(this.state.productList[index])
+    }
+    else {
+      let qtyToUpdate = newCartList.indexOf(this.state.productList[index])
+      newCartList[qtyToUpdate].quantity++
+      console.log(qtyToUpdate)
+    }
     this.setState({cartList: newCartList})
+    
   }
   deleteProductFromCartList = (id) => {
     const newCartList = [...this.state.cartList]
